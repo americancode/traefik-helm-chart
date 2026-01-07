@@ -480,6 +480,15 @@ spec:
                                   (i.e. HTTPS).
                                 type: boolean
                             type: object
+                          header:
+                            description: Header defines the sticky header configuration.
+                            properties:
+                              name:
+                                description: |-
+                                  Name defines the header name used for sticky sessions.
+                                  The client must include this header in requests and the server will set it in responses.
+                                type: string
+                            type: object
                         type: object
                       strategy:
                         description: |-
@@ -1211,8 +1220,9 @@ spec:
                   More info: https://doc.traefik.io/traefik/v3.6/middlewares/http/redirectscheme/
                 properties:
                   permanent:
-                    description: Permanent defines whether the redirection is permanent
-                      (308).
+                    description: |-
+                      Permanent defines whether the redirection is permanent.
+                      For HTTP GET requests a 301 is returned, otherwise a 308 is returned.
                     type: boolean
                   port:
                     description: Port defines the port of the new URL.
