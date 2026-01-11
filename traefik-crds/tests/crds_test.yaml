@@ -90,6 +90,14 @@ tests:
           path: spec.group
           pattern: ^gateway\.networking\.(k8s|x-k8s)\.io$
       - equal:
+          path: spec.names.kind
+          value: XBackendTrafficPolicy
+        documentIndex: 9
+      - equal:
+          path: spec.group
+          value: gateway.networking.x-k8s.io
+        documentIndex: 9
+      - equal:
           path: metadata.annotations["helm.sh/resource-policy"]
           value: keep
 

@@ -175,6 +175,9 @@ kubectl get customresourcedefinitions.apiextensions.k8s.io -o name | grep traefi
 # If you use gateway API, also change Gateway API ownership
 kubectl get customresourcedefinitions.apiextensions.k8s.io -o name | grep gateway.networking.k8s.io | \
   xargs kubectl patch --type='json' -p='[{"op": "add", "path": "/metadata/labels", "value": {"app.kubernetes.io/managed-by":"Helm"}},{"op": "add", "path": "/metadata/annotations/meta.helm.sh~1release-name", "value":"traefik-crds"},{"op": "add", "path": "/metadata/annotations/meta.helm.sh~1release-namespace", "value":"default"}]'
+# If you use Gateway API experimental channel (XBackendTrafficPolicy, etc.), change experimental Gateway API ownership
+kubectl get customresourcedefinitions.apiextensions.k8s.io -o name | grep gateway.networking.x-k8s.io | \
+  xargs kubectl patch --type='json' -p='[{"op": "add", "path": "/metadata/labels", "value": {"app.kubernetes.io/managed-by":"Helm"}},{"op": "add", "path": "/metadata/annotations/meta.helm.sh~1release-name", "value":"traefik-crds"},{"op": "add", "path": "/metadata/annotations/meta.helm.sh~1release-namespace", "value":"default"}]'
 # Deploy the optional CRDs chart
 helm install traefik-crds traefik/traefik-crds
 # Upgrade Traefik release

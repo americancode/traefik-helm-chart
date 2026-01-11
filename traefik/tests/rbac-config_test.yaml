@@ -1084,6 +1084,16 @@ tests:
           path: rules
           content:
             apiGroups:
+              - gateway.networking.x-k8s.io
+            resources:
+              - xbackendtrafficpolicies/status
+            verbs:
+              - update
+      - template: rbac/clusterrole.yaml
+        contains:
+          path: rules
+          content:
+            apiGroups:
               - gateway.networking.k8s.io
             resources:
               - backendtlspolicies
@@ -1094,6 +1104,18 @@ tests:
               - referencegrants
               - tcproutes
               - tlsroutes
+            verbs:
+              - get
+              - list
+              - watch
+      - template: rbac/clusterrole.yaml
+        contains:
+          path: rules
+          content:
+            apiGroups:
+              - gateway.networking.x-k8s.io
+            resources:
+              - xbackendtrafficpolicies
             verbs:
               - get
               - list
@@ -1143,6 +1165,16 @@ tests:
           path: rules
           content:
             apiGroups:
+              - gateway.networking.x-k8s.io
+            resources:
+              - xbackendtrafficpolicies/status
+            verbs:
+              - update
+      - template: rbac/clusterrole.yaml
+        contains:
+          path: rules
+          content:
+            apiGroups:
               - gateway.networking.k8s.io
             resources:
               - backendtlspolicies
@@ -1153,6 +1185,18 @@ tests:
               - referencegrants
               - tcproutes
               - tlsroutes
+            verbs:
+              - get
+              - list
+              - watch
+      - template: rbac/clusterrole.yaml
+        contains:
+          path: rules
+          content:
+            apiGroups:
+              - gateway.networking.x-k8s.io
+            resources:
+              - xbackendtrafficpolicies
             verbs:
               - get
               - list

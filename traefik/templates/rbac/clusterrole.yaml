@@ -179,6 +179,14 @@ rules:
       - list
       - watch
   - apiGroups:
+      - gateway.networking.x-k8s.io
+    resources:
+      - xbackendtrafficpolicies
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
       - gateway.networking.k8s.io
     resources:
       {{- if semverCompare ">=v3.2.0-0" $version }}
@@ -192,6 +200,12 @@ rules:
       - httproutes/status
       - tcproutes/status
       - tlsroutes/status
+    verbs:
+      - update
+  - apiGroups:
+      - gateway.networking.x-k8s.io
+    resources:
+      - xbackendtrafficpolicies/status
     verbs:
       - update
   {{- end }}
